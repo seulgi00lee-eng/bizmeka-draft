@@ -125,6 +125,12 @@ header{background:var(--sur);border-bottom:1px solid var(--bdr);padding:12px 24p
   <div class="logo">기</div>
   <div class="hi"><h1>기안 자동생성기</h1><p>플로우교육 총무기획팀 · bizmeka EZ</p></div>
   <div class="hbadge"><span class="dot"></span>자동 감지 중</div>
+  <div style="display:flex;align-items:center;gap:8px;margin-left:16px">
+    <input type="password" id="api-key-input" placeholder="Anthropic API Key (sk-ant-...)" 
+      style="padding:6px 12px;border:1px solid #e2e8f0;border-radius:6px;font-size:11px;width:260px;font-family:monospace;background:#f8f9fc"
+      oninput="saveApiKey(this.value)">
+    <span id="api-key-status" style="font-size:10px;color:#94a3b8">미입력</span>
+  </div>
 </header>
 
 <div class="wrap">
@@ -150,6 +156,18 @@ const SUPABASE_KEY = 'sb_publishable_dmezdb1ZFA50vKPRv4b4ow_oY1dxzAK';
 const POLL_INTERVAL = 30000;
 
 let drafts = [], activeId = null, draftCounter = 0, seenIds = new Set();
+
+function saveApiKey(val){
+  sessionStorage.setItem('akey',val);
+  var st=document.getElementById('api-key-status');
+  if(!st)return;
+  if(val.startsWith('sk-ant-')){st.textContent='✅ 연결됨';st.style.color='#059669';}
+  else if(val.length>0){st.textContent='⚠️ 형식 확인';st.style.color='#f59e0b';}
+  else{st.textContent='미입력';st.style.color='#94a3b8';}
+}
+function getApiKey(){
+  return document.getElementById('api-key-input')?.value||sessionStorage.getItem('akey')||'';
+}
 
 // ── Supabase 폴링 ──
 async function pollSupabase() {
@@ -413,6 +431,10 @@ function updateSummary(){
 async function generate(id){
   const d=getDraft(id);
   if(!d.fileData){alert('파일을 먼저 업로드해주세요.');return;}
+  const apiKey = getApiKey();
+  if(!apiKey || !apiKey.startsWith('sk-ant-')){
+    alert('우측 상단에 Anthropic API Key를 입력해주세요.\n(sk-ant-... 형식)');return;
+  }
   const optApprover=document.getElementById('oa-'+id)?.value.trim()||'';
   const optPayment=document.getElementById('op-'+id)?.value||'';
   const optPaydate=document.getElementById('od-'+id)?.value.trim()||'';
@@ -432,7 +454,7 @@ async function generate(id){
   try{
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true','x-api-key':apiKey},
       body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:1000,system:sysPrompt,messages:[{role:'user',content:msgContent}]})
     });
     const data=await res.json();
