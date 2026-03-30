@@ -158,7 +158,7 @@ const POLL_INTERVAL = 30000;
 let drafts = [], activeId = null, draftCounter = 0, seenIds = new Set();
 
 function saveApiKey(val){
-  sessionStorage.setItem('akey',val);
+  localStorage.setItem('akey',val);
   var st=document.getElementById('api-key-status');
   if(!st)return;
   if(val.startsWith('sk-ant-')){st.textContent='✅ 연결됨';st.style.color='#059669';}
@@ -166,7 +166,7 @@ function saveApiKey(val){
   else{st.textContent='미입력';st.style.color='#94a3b8';}
 }
 function getApiKey(){
-  return document.getElementById('api-key-input')?.value||sessionStorage.getItem('akey')||'';
+  return document.getElementById('api-key-input')?.value||localStorage.getItem('akey')||'';
 }
 
 // ── Supabase 폴링 ──
