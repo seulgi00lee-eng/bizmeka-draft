@@ -17,7 +17,6 @@ header{background:var(--sur);border-bottom:1px solid var(--bdr);padding:12px 24p
 .hbadge .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);animation:blink .9s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .wrap{max-width:1100px;margin:0 auto;padding:20px 16px;display:flex;flex-direction:column;gap:16px}
-/* 탭바 */
 .tabbar{display:flex;align-items:center;background:var(--sur);border:1px solid var(--bdr);border-radius:10px;padding:6px;gap:4px;overflow-x:auto}
 .tabbar::-webkit-scrollbar{height:3px}
 .tabbar::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:2px}
@@ -32,7 +31,6 @@ header{background:var(--sur);border-bottom:1px solid var(--bdr);padding:12px 24p
 .tclose:hover{opacity:1}
 .add-tab{width:30px;height:30px;border-radius:7px;border:1.5px dashed var(--bdr);background:none;cursor:pointer;font-size:18px;color:var(--tx3);flex-shrink:0;transition:all .15s;display:flex;align-items:center;justify-content:center}
 .add-tab:hover{border-color:var(--acc);color:var(--acc);background:#eff6ff}
-/* 패널 */
 .panels{background:var(--sur);border:1px solid var(--bdr);border-radius:10px;overflow:hidden}
 .panel{display:none}
 .panel.active{display:block}
@@ -40,15 +38,12 @@ header{background:var(--sur);border-bottom:1px solid var(--bdr);padding:12px 24p
 @media(max-width:700px){.pinner{grid-template-columns:1fr}}
 .pleft{border-right:1px solid var(--bdr);padding:16px;display:flex;flex-direction:column;gap:14px;background:var(--sur2);overflow-y:auto}
 .sttl{font-size:10px;font-weight:700;color:var(--tx3);letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px}
-/* 모드 선택 */
 .mode-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .mode-btn{padding:9px 6px;border:1.5px solid var(--bdr);border-radius:7px;background:var(--sur);color:var(--tx2);cursor:pointer;font-size:11.5px;font-weight:500;text-align:center;transition:all .15s;font-family:'Noto Sans KR',sans-serif;line-height:1.4}
 .mode-btn.on{border-color:var(--acc);background:#eff6ff;color:var(--acc)}
-/* 기안 유형 */
 .type-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .type-btn{padding:8px 6px;border:1px solid var(--bdr);border-radius:7px;background:var(--sur);color:var(--tx2);cursor:pointer;font-size:12px;font-weight:500;text-align:center;transition:all .15s;font-family:'Noto Sans KR',sans-serif}
 .type-btn.on{border-color:var(--acc);background:#eff6ff;color:var(--acc)}
-/* 업로드 */
 .drop-zone{border:1.5px dashed var(--bdr);border-radius:8px;padding:18px 12px;text-align:center;cursor:pointer;transition:all .2s;background:var(--sur)}
 .drop-zone:hover,.drop-zone.over{border-color:var(--acc);background:#eff6ff}
 .dz-title{font-size:12.5px;font-weight:600;color:var(--tx);margin-bottom:3px}
@@ -59,19 +54,15 @@ header{background:var(--sur);border-bottom:1px solid var(--bdr);padding:12px 24p
 .fc-name{flex:1;font-size:11px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fc-size{font-size:10px;color:var(--tx3);flex-shrink:0}
 .fdel{background:none;border:none;color:var(--tx3);cursor:pointer;font-size:14px;padding:2px 4px;flex-shrink:0}
-/* 자동생성 안내 */
 .auto-info{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:12px;font-size:11.5px;color:var(--acc);line-height:1.8}
 .auto-info b{font-weight:600}
-/* opt */
 .opt-grid{display:flex;flex-direction:column;gap:7px}
 .opt-item{display:flex;flex-direction:column;gap:3px}
 .opt-item label{font-size:10.5px;color:var(--tx2);font-weight:500}
 .opt-item input,.opt-item select{width:100%;padding:6px 9px;border:1px solid var(--bdr);border-radius:6px;font-size:12px;font-family:'Noto Sans KR',sans-serif;background:var(--sur);color:var(--tx)}
-/* gen btn */
 .gen-btn{padding:11px;border-radius:8px;background:var(--acc);border:none;color:#fff;font-size:13px;font-weight:700;cursor:pointer;width:100%;transition:all .2s;font-family:'Noto Sans KR',sans-serif;margin-top:auto}
 .gen-btn:hover:not(:disabled){background:#1d4ed8}
 .gen-btn:disabled{opacity:.4;cursor:not-allowed}
-/* 오른쪽 */
 .pright{display:flex;flex-direction:column;overflow:hidden}
 .pright-hd{padding:11px 18px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;background:var(--sur);flex-shrink:0}
 .pright-ttl{font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px}
@@ -80,11 +71,9 @@ header{background:var(--sur);border-bottom:1px solid var(--bdr);padding:12px 24p
 .act-btn{padding:5px 11px;border-radius:6px;font-size:11px;font-weight:500;cursor:pointer;border:1px solid var(--bdr);background:var(--sur);color:var(--tx2);font-family:'Noto Sans KR',sans-serif}
 .act-copy{background:#ecfdf5;border-color:#a7f3d0;color:var(--ok)}
 .pright-body{flex:1;overflow-y:auto;padding:18px}
-/* 빈 상태 */
 .empty{min-height:400px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center}
 .empty-ttl{font-size:14px;font-weight:600;color:var(--tx)}
 .empty-sub{font-size:12px;color:var(--tx2);line-height:1.7}
-/* 로딩 */
 .loading{min-height:400px;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px}
 .loading.on{display:flex}
 .spin{width:30px;height:30px;border:2px solid var(--bdr);border-top-color:var(--acc);border-radius:50%;animation:spin .7s linear infinite}
@@ -93,7 +82,6 @@ header{background:var(--sur);border-bottom:1px solid var(--bdr);padding:12px 24p
 .lstep.act{color:var(--acc)}
 .lstep.done{color:var(--ok)}
 .ld{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
-/* 초안 */
 .draft{display:none;flex-direction:column;gap:12px}
 .draft.on{display:flex}
 .icard{background:var(--sur);border:1px solid var(--bdr);border-radius:8px;overflow:hidden}
@@ -112,7 +100,6 @@ header{background:var(--sur);border-bottom:1px solid var(--bdr);padding:12px 24p
 .cta-btn{padding:8px 14px;background:var(--ok);color:#fff;border:none;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0;font-family:'Noto Sans KR',sans-serif}
 .cta-btn:hover{background:#047857}
 .err-box{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:12px;font-size:12px;color:#991b1b;line-height:1.6}
-/* 하단 요약 */
 .summary{padding:10px 16px;background:var(--sur);border:1px solid var(--bdr);border-radius:8px;font-size:12px;color:var(--tx2);display:flex;align-items:center;gap:12px}
 .summary b{color:var(--tx)}
 .ssep{color:var(--bdr)}
@@ -125,14 +112,7 @@ header{background:var(--sur);border-bottom:1px solid var(--bdr);padding:12px 24p
   <div class="logo">기</div>
   <div class="hi"><h1>기안 자동생성기</h1><p>플로우교육 총무기획팀 · bizmeka EZ</p></div>
   <div class="hbadge"><span class="dot"></span>자동 감지 중</div>
-  <div style="display:flex;align-items:center;gap:8px;margin-left:16px">
-    <input type="password" id="api-key-input" placeholder="Anthropic API Key (sk-ant-...)" 
-      style="padding:6px 12px;border:1px solid #e2e8f0;border-radius:6px;font-size:11px;width:260px;font-family:monospace;background:#f8f9fc"
-      oninput="saveApiKey(this.value)">
-    <span id="api-key-status" style="font-size:10px;color:#94a3b8">미입력</span>
-  </div>
 </header>
-
 <div class="wrap">
   <div class="tabbar" id="tabbar">
     <button class="add-tab" onclick="addDraft()" title="새 기안 추가">+</button>
@@ -147,98 +127,84 @@ header{background:var(--sur);border-bottom:1px solid var(--bdr);padding:12px 24p
   </div>
 </div>
 <div class="toast" id="toast">복사되었습니다</div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
-// ★ Supabase 정보 입력 ★
+// ★ 설정값 (관리자만 수정) ★
+const ANTHROPIC_KEY = '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';
 const SUPABASE_URL = 'https://ayebtgxyjsgrxkmfmnhr.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_dmezdbiZFA50vKPRv4b4ow_oYidxzAK';
+const SUPABASE_KEY = 'sb_publishable_dmezdb1ZFA50vKPRv4b4ow_oY1dxzAK';
 const POLL_INTERVAL = 30000;
 
-let drafts = [], activeId = null, draftCounter = 0, seenIds = new Set();
+let drafts=[],activeId=null,draftCounter=0,seenIds=new Set();
 
-function saveApiKey(val){
-  localStorage.setItem('akey',val);
-  var st=document.getElementById('api-key-status');
-  if(!st)return;
-  if(val.startsWith('sk-ant-')){st.textContent='✅ 연결됨';st.style.color='#059669';}
-  else if(val.length>0){st.textContent='⚠️ 형식 확인';st.style.color='#f59e0b';}
-  else{st.textContent='미입력';st.style.color='#94a3b8';}
-}
-function getApiKey(){
-  return document.getElementById('api-key-input')?.value||localStorage.getItem('akey')||'';
-}
-
-// ── Supabase 폴링 ──
-async function pollSupabase() {
-  try {
-    const res = await fetch(SUPABASE_URL + '/rest/v1/draft_queue?status=eq.done&order=created_at.desc&limit=20', {
-      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
+// ── Supabase 폴링 (중복 방지) ──
+async function pollSupabase(){
+  try{
+    const res=await fetch(SUPABASE_URL+'/rest/v1/draft_queue?status=eq.done&order=created_at.desc&limit=50',{
+      headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}
     });
-    if (!res.ok) return;
-    const rows = await res.json();
-    rows.forEach(row => {
-      if (!seenIds.has(row.id)) {
+    if(!res.ok)return;
+    const rows=await res.json();
+    rows.forEach(row=>{
+      if(!seenIds.has(row.id)){
         seenIds.add(row.id);
         addDraftFromSupabase(row);
       }
     });
-  } catch(e) {}
+  }catch(e){}
 }
 
-function addDraftFromSupabase(row) {
-  const id = ++draftCounter;
-  const d = { id, name: (row.file_name||'기안').slice(0,14), docType: row.doc_type||'품의서',
-    fileData:null, fileType:'', fileName: row.file_name||'', status:'done',
-    fromSupabase:true, draftBody: row.draft_body||'', createdAt: row.created_at, sourceUrl: row.source_url||'' };
-  drafts.push(d);
-  renderTab(d); renderPanel(d);
-  if (drafts.length === 1) switchTab(id);
+function addDraftFromSupabase(row){
+  const id=++draftCounter;
+  const d={id,name:(row.file_name||'기안').slice(0,14),docType:row.doc_type||'품의서',
+    fileData:null,fileType:'',fileName:row.file_name||'',status:'done',
+    fromSupabase:true,draftBody:row.draft_body||'',createdAt:row.created_at,sourceUrl:row.source_url||''};
+  drafts.push(d);renderTab(d);renderPanel(d);
+  if(drafts.length===1)switchTab(id);
   updateSummary();
-  setTimeout(() => {
-    const bc = document.getElementById('bc-'+id);
-    if (bc && d.draftBody) { bc.textContent = d.draftBody; showDraftPanel(id, d); }
-  }, 100);
+  setTimeout(()=>{
+    const bc=document.getElementById('bc-'+id);
+    if(bc&&d.draftBody){bc.textContent=d.draftBody;showDraftPanel(id,d);}
+  },100);
 }
 
-function showDraftPanel(id, d) {
-  const today = new Date(d.createdAt || Date.now());
-  const dateStr = today.getFullYear()+'년 '+(today.getMonth()+1)+'월 '+today.getDate()+'일';
-  const meta = [
+function showDraftPanel(id,d){
+  const today=new Date(d.createdAt||Date.now());
+  const dateStr=today.getFullYear()+'년 '+(today.getMonth()+1)+'월 '+today.getDate()+'일';
+  const meta=[
     {k:'문서 유형',v:d.docType},{k:'생성일',v:dateStr},{k:'기안 부서',v:'총무기획팀'},
     {k:'결재자',v:'(확인 필요)'},{k:'파일명',v:d.fileName},{k:'출처',v:d.fromSupabase?'드라이브 연동':'직접 업로드'}
   ];
-  const ig = document.getElementById('ig-'+id);
-  if (ig) ig.innerHTML = meta.map(m=>`<div class="ig"><div class="ig-k">${m.k}</div><div class="ig-v">${m.v}</div></div>`).join('');
+  const ig=document.getElementById('ig-'+id);
+  if(ig)ig.innerHTML=meta.map(m=>`<div class="ig"><div class="ig-k">${m.k}</div><div class="ig-v">${m.v}</div></div>`).join('');
   document.getElementById('em-'+id).style.display='none';
   document.getElementById('lo-'+id).classList.remove('on');
   document.getElementById('dr-'+id).classList.add('on');
-  setTabStatus(id,'done'); updateSummary();
+  setTabStatus(id,'done');updateSummary();
 }
 
-// ── 탭/패널 ──
-function addDraft() {
-  const id = ++draftCounter;
-  const d = { id, name:'기안 '+id, docType:'품의서', fileData:null, fileType:'', fileName:'', status:'empty', fromSupabase:false, mode:'manual' };
-  drafts.push(d); renderTab(d); renderPanel(d); switchTab(id); updateSummary();
+function addDraft(){
+  const id=++draftCounter;
+  const d={id,name:'기안 '+id,docType:'품의서',fileData:null,fileType:'',fileName:'',status:'empty',fromSupabase:false,mode:'manual'};
+  drafts.push(d);renderTab(d);renderPanel(d);switchTab(id);updateSummary();
 }
 
-function renderTab(d) {
-  const tabbar = document.getElementById('tabbar');
-  const addBtn = tabbar.querySelector('.add-tab');
-  const tab = document.createElement('div');
-  tab.className='tab'; tab.id='tab-'+d.id; tab.onclick=()=>switchTab(d.id);
-  const dotCls = d.status==='done'?'tdot done':'tdot';
+function renderTab(d){
+  const tabbar=document.getElementById('tabbar');
+  const addBtn=tabbar.querySelector('.add-tab');
+  const tab=document.createElement('div');
+  tab.className='tab';tab.id='tab-'+d.id;tab.onclick=()=>switchTab(d.id);
+  const dotCls=d.status==='done'?'tdot done':'tdot';
   tab.innerHTML=`<span class="${dotCls}" id="ts-${d.id}"></span><span id="tl-${d.id}">${d.name}</span><button class="tclose" onclick="event.stopPropagation();removeDraft(${d.id})">×</button>`;
-  tabbar.insertBefore(tab, addBtn);
+  tabbar.insertBefore(tab,addBtn);
 }
 
-function renderPanel(d) {
-  const panels = document.getElementById('panels');
-  const el = document.createElement('div');
-  el.className='panel'; el.id='panel-'+d.id;
-  const isAuto = d.fromSupabase;
-  el.innerHTML = `
+function renderPanel(d){
+  const panels=document.getElementById('panels');
+  const el=document.createElement('div');
+  el.className='panel';el.id='panel-'+d.id;
+  const isAuto=d.fromSupabase;
+  el.innerHTML=`
   <div class="pinner">
     <div class="pleft">
       <div>
@@ -332,18 +298,16 @@ function renderPanel(d) {
   panels.appendChild(el);
 }
 
-function setMode(id, mode, btn) {
-  const d = getDraft(id);
-  d.mode = mode;
-  const panel = document.getElementById('panel-'+id);
-  panel.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('on'));
+function setMode(id,mode,btn){
+  getDraft(id).mode=mode;
+  document.getElementById('panel-'+id).querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
-  document.getElementById('manual-section-'+id).style.display = mode==='manual' ? '' : 'none';
-  document.getElementById('auto-section-'+id).style.display  = mode==='auto'   ? '' : 'none';
-  document.getElementById('gb-'+id).style.display = mode==='manual' ? '' : 'none';
+  document.getElementById('manual-section-'+id).style.display=mode==='manual'?'':'none';
+  document.getElementById('auto-section-'+id).style.display=mode==='auto'?'':'none';
+  document.getElementById('gb-'+id).style.display=mode==='manual'?'':'none';
 }
 
-function switchTab(id) {
+function switchTab(id){
   activeId=id;
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
@@ -351,12 +315,12 @@ function switchTab(id) {
   document.getElementById('panel-'+id)?.classList.add('active');
 }
 
-function removeDraft(id) {
+function removeDraft(id){
   if(drafts.length<=1){alert('마지막 기안은 삭제할 수 없습니다.');return;}
   drafts=drafts.filter(d=>d.id!==id);
   document.getElementById('tab-'+id)?.remove();
   document.getElementById('panel-'+id)?.remove();
-  if(activeId===id) switchTab(drafts[drafts.length-1].id);
+  if(activeId===id)switchTab(drafts[drafts.length-1].id);
   updateSummary();
 }
 
@@ -375,7 +339,7 @@ function onDrop(e,id){e.preventDefault();onDragLeave(id);const f=e.dataTransfer.
 function onFileSelect(e,id){const f=e.target.files[0];if(f)loadFile(id,f);}
 
 function loadFile(id,file){
-  const d=getDraft(id); d.fileName=file.name;
+  const d=getDraft(id);d.fileName=file.name;
   const ext=file.name.split('.').pop().toLowerCase();
   const icons={pdf:'📕',xlsx:'📊',xls:'📊',csv:'📄'};
   document.getElementById('fci-'+id).textContent=icons[ext]||'📄';
@@ -386,11 +350,11 @@ function loadFile(id,file){
   document.getElementById('tl-'+id).textContent=file.name.length>14?file.name.slice(0,14)+'…':file.name;
   if(ext==='pdf'){
     d.fileType='pdf';
-    const r=new FileReader(); r.onload=e=>{d.fileData=e.target.result.split(',')[1];}; r.readAsDataURL(file);
-  } else if(ext==='csv'){
+    const r=new FileReader();r.onload=e=>{d.fileData=e.target.result.split(',')[1];};r.readAsDataURL(file);
+  }else if(ext==='csv'){
     d.fileType='text';
-    const r=new FileReader(); r.onload=e=>{d.fileData=e.target.result;}; r.readAsText(file,'UTF-8');
-  } else {
+    const r=new FileReader();r.onload=e=>{d.fileData=e.target.result;};r.readAsText(file,'UTF-8');
+  }else{
     d.fileType='text';
     const r=new FileReader();
     r.onload=e=>{const wb=XLSX.read(e.target.result,{type:'array'});let out='';wb.SheetNames.forEach(n=>{const csv=XLSX.utils.sheet_to_csv(wb.Sheets[n]);if(csv.replace(/,/g,'').trim())out+=`[시트: ${n}]\n${csv}\n\n`;});d.fileData=out;};
@@ -399,12 +363,13 @@ function loadFile(id,file){
 }
 
 function removeFile(id){
-  const d=getDraft(id); d.fileData=null; d.fileType=''; d.fileName='';
+  const d=getDraft(id);d.fileData=null;d.fileType='';d.fileName='';
   document.getElementById('fc-'+id).classList.remove('on');
   document.getElementById('dz-'+id).style.display='';
   document.getElementById('fi-'+id).value='';
   document.getElementById('tl-'+id).textContent='기안 '+id;
 }
+
 function fmtSize(b){if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';return(b/1048576).toFixed(1)+'MB';}
 
 let stepTimers={};
@@ -418,11 +383,13 @@ function startSteps(id){
   },900);
 }
 function stopSteps(id){clearInterval(stepTimers[id]);}
+
 function setTabStatus(id,status){
   const ts=document.getElementById('ts-'+id);
   if(!ts)return;
   ts.className='tdot'+(status==='done'?' done':status==='loading'?' loading':'');
 }
+
 function updateSummary(){
   document.getElementById('total-count').textContent=drafts.length;
   document.getElementById('done-count').textContent=drafts.filter(d=>d.status==='done').length;
@@ -431,10 +398,6 @@ function updateSummary(){
 async function generate(id){
   const d=getDraft(id);
   if(!d.fileData){alert('파일을 먼저 업로드해주세요.');return;}
-  const apiKey = getApiKey();
-  if(!apiKey || !apiKey.startsWith('sk-ant-')){
-    alert('우측 상단에 Anthropic API Key를 입력해주세요.\n(sk-ant-... 형식)');return;
-  }
   const optApprover=document.getElementById('oa-'+id)?.value.trim()||'';
   const optPayment=document.getElementById('op-'+id)?.value||'';
   const optPaydate=document.getElementById('od-'+id)?.value.trim()||'';
@@ -442,26 +405,31 @@ async function generate(id){
   document.getElementById('dr-'+id).classList.remove('on');
   document.getElementById('lo-'+id).classList.add('on');
   document.getElementById('gb-'+id).disabled=true;
-  d.status='loading'; setTabStatus(id,'loading'); startSteps(id);
+  d.status='loading';setTabStatus(id,'loading');startSteps(id);
   const today=new Date();
   const dateStr=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   const isPumui=d.docType==='품의서';
   const sysPrompt='당신은 대한민국 교육기업 총무기획팀의 기안 작성 전문가입니다.';
   const userTxt=`다음 파일과 정보를 바탕으로 ${d.docType} 기안 본문을 완성해주세요.\n\n[기안 정보]\n- 기안일: ${dateStr}\n- 기안 부서: 총무기획팀\n- 결재자: ${optApprover||'(파일에서 추출)'}\n${optPayment?`- 지급 방법: ${optPayment}\n`:''}${optPaydate?`- 지급 요청일: ${optPaydate}\n`:''}\n[작성 지침]\n1. 파일 내용 분석하여 모든 항목 채울 것\n2. 금액·수량·업체명·날짜 정확히 추출\n3. 없는 항목은 [확인 필요] 표기\n4. 격식체, 양식 그대로, 본문 외 설명 금지\n\n${isPumui?'[출력 양식]\n상기 건으로 아래와 같이 품의 하오니 재가 해주시기 바랍니다.\n\n\n              -    아         래    -\n\n\n1. 안 건 : \n2. 목 적 : \n3. 내 용 : \n4. 예상(예산) 금액 : \n5. 업 체 : \n6. 지급 방법 : \n7. 지급 요청일 : \n8. 첨부서식 : \n9. 기 타 : ':'[출력 양식]\n상기 건으로 아래와 같이 보고 드립니다.\n\n\n              -    아         래    -\n\n\n1. 개 요 : \n2. 주요 내용 : \n3. 세부 현황 : \n4. 시사점 및 결론 : \n5. 첨부서식 : \n6. 기 타 : '}`;
   let msgContent;
-  if(d.fileType==='pdf') msgContent=[{type:'document',source:{type:'base64',media_type:'application/pdf',data:d.fileData}},{type:'text',text:userTxt}];
+  if(d.fileType==='pdf')msgContent=[{type:'document',source:{type:'base64',media_type:'application/pdf',data:d.fileData}},{type:'text',text:userTxt}];
   else msgContent=[{type:'text',text:userTxt+'\n\n[파일 데이터]\n'+d.fileData.slice(0,5000)}];
   try{
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true','x-api-key':apiKey},
+      headers:{
+        'Content-Type':'application/json',
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true',
+        'x-api-key':ANTHROPIC_KEY
+      },
       body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:1000,system:sysPrompt,messages:[{role:'user',content:msgContent}]})
     });
     const data=await res.json();
     if(data.error)throw new Error(data.error.message);
     const body=data.content?.[0]?.text||'생성 실패.';
     document.getElementById('bc-'+id).textContent=body;
-    d.draftBody=body; d.status='done';
+    d.draftBody=body;d.status='done';
     showDraftPanel(id,{...d,createdAt:new Date().toISOString()});
     document.getElementById('tl-'+id).textContent=(d.fileName||'기안 '+id).slice(0,14);
   }catch(err){
@@ -469,7 +437,7 @@ async function generate(id){
     document.getElementById('lo-'+id).classList.remove('on');
     document.getElementById('em-'+id).style.display='';
     document.getElementById('em-'+id).innerHTML=`<div class="err-box">오류: ${err.message}</div><button class="act-btn" style="margin-top:10px" onclick="resetDraft(${id})">초기화</button>`;
-    d.status='empty'; setTabStatus(id,'');
+    d.status='empty';setTabStatus(id,'');
   }
   document.getElementById('gb-'+id).disabled=false;
   updateSummary();
@@ -484,7 +452,7 @@ function copyDraft(id){
 
 function resetDraft(id){
   const d=getDraft(id);
-  if(!d.fromSupabase) removeFile(id);
+  if(!d.fromSupabase)removeFile(id);
   ['oa-','od-'].forEach(p=>{const el=document.getElementById(p+id);if(el)el.value='';});
   const op=document.getElementById('op-'+id);if(op)op.value='';
   document.getElementById('dr-'+id).classList.remove('on');
@@ -492,12 +460,12 @@ function resetDraft(id){
   document.getElementById('em-'+id).style.display='';
   document.getElementById('em-'+id).innerHTML=`<div style="font-size:28px;opacity:.2">📝</div><div class="empty-ttl">파일을 업로드하고 생성하세요</div><div class="empty-sub">PDF, Excel, CSV 모두 지원합니다</div>`;
   document.getElementById('tl-'+id).textContent='기안 '+id;
-  d.status='empty'; setTabStatus(id,''); updateSummary();
+  d.status='empty';setTabStatus(id,'');updateSummary();
 }
 
 addDraft();
-setInterval(pollSupabase, POLL_INTERVAL);
-setTimeout(pollSupabase, 2000);
+setInterval(pollSupabase,POLL_INTERVAL);
+setTimeout(pollSupabase,2000);
 </script>
 </body>
 </html>
