@@ -263,42 +263,55 @@ async function generate(id){
   t.status = 'loading'; t.draft = '';
   renderContent();
 
-  const today = new Date();
-  const dateStr = today.getFullYear()+'년 '+(today.getMonth()+1)+'월 '+today.getDate()+'일';
   const approver = document.getElementById('approver-'+id)?.value || '';
   const paymethod = document.getElementById('paymethod-'+id)?.value || '자동 판단';
   const paydate = document.getElementById('paydate-'+id)?.value || '';
 
-  const form = `상기 건으로 아래와 같이 품의 하오니 재가 해주시기 바랍니다.\n\n\n              -    아         래    -\n\n\n1. 안 건 : \n2. 목 적 : \n3. 내 용 : \n4. 예상(예산) 금액 : \n5. 업 체 : \n6. 지급 방법 : ${paymethod !== '자동 판단' ? paymethod : ''}\n7. 지급 요청일 : ${paydate}\n8. 첨부서식 : \n9. 기 타 : `;
-
-  const prompt = `다음 파일 내용을 바탕으로 ${t.fileType} 기안 본문을 완성해주세요.\n\n[기안 정보]\n- 기안일: ${dateStr}\n- 기안 부서: 총무기획팀\n- 결재자: ${approver}\n- 파일명: ${t.fileName}\n\n[작성 지침]\n1. 파일에서 금액, 업체명, 날짜를 정확히 추출\n2. 파일에 명시된 항목은 반드시 채울 것\n3. 격식체 사용, 양식 그대로, 본문 외 설명 금지\n\n${form}\n\n[첨부파일]\n파일명: ${t.fileName}\n(첨부된 파일의 내용을 분석하여 품의서를 작성해주세요)`;
-
   try {
-    const res = await fetch(PROXY_URL, {
+    fetch(PROXY_URL, {
       method: 'POST',
+      mode: 'no-cors',
       headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 1000,
-        messages: [{ role: 'user', content: [
-          { type: 'text', text: prompt },
-          { type: 'image', source: { type: 'base64', media_type: t.fileData.split(';')[0].split(':')[1], data: t.fileData.split(',')[1] } }
-        ]}]
+        fileName: t.fileName,
+        fileBase64: t.fileData.split(',')[1],
+        mimeType: t.fileData.split(';')[0].split(':')[1],
+        docType: t.fileType,
+        approver: approver,
+        paymethod: paymethod,
+        paydate: paydate
       })
     });
-    const json = await res.json();
-    if(json.ok && json.data?.content?.[0]?.text){
-      t.draft = json.data.content[0].text;
-      t.status = 'done';
-    } else {
-      t.draft = '오류: ' + (json.error || JSON.stringify(json));
-      t.status = 'error';
-    }
+
+    const startTime = Date.now();
+    const poll = setInterval(async () => {
+      if(Date.now() - startTime > 30000){
+        clearInterval(poll);
+        t.draft = '오류: 시간 초과. 드라이브 자동 방식을 사용해주세요.';
+        t.status = 'error';
+        renderContent();
+        return;
+      }
+      try {
+        const res = await fetch(SUPABASE_URL+'/rest/v1/draft_queue?select=*&status=eq.done&order=created_at.desc&limit=1', {
+          headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer '+SUPABASE_KEY }
+        });
+        const rows = await res.json();
+        if(rows.length && !seenIds.has(rows[0].id)){
+          clearInterval(poll);
+          seenIds.add(rows[0].id);
+          t.draft = rows[0].draft_body;
+          t.status = 'done';
+          renderContent();
+        }
+      } catch(e) {}
+    }, 3000);
+
   } catch(err) {
     t.draft = '오류: ' + err.message;
     t.status = 'error';
+    renderContent();
   }
-  renderContent();
 }
 
 function updateFooter(){
