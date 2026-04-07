@@ -327,14 +327,29 @@ async function pollSupabase(){
     });
     const rows = await res.json();
     if(!Array.isArray(rows)) return;
+
+    // 현재 Supabase에 있는 id 목록
+    const activeIds = new Set(rows.map(r => r.id));
+
+    // 드라이브에서 삭제된 탭 제거
+    tabs = tabs.filter(t => {
+      if(!t.supabaseId) return true; // 직접 업로드 탭은 유지
+      return activeIds.has(t.supabaseId);
+    });
+
+    // 새 항목만 탭 추가
     rows.forEach(row => {
       if(seenIds.has(row.id)) return;
       seenIds.add(row.id);
       const id = uid();
-      tabs.push({ id, fileName: row.file_name, fileData: null, fileType: row.doc_type || '품의서', draft: row.draft_body, status: 'done' });
-      renderTabs();
-      activateTab(id);
+      tabs.push({ id, supabaseId: row.id, fileName: row.file_name, fileData: null, fileType: row.doc_type || '품의서', draft: row.draft_body, status: 'done' });
     });
+
+    renderTabs();
+    if(activeTabId && !tabs.find(t => t.id === activeTabId)){
+      activeTabId = tabs.length ? tabs[tabs.length-1].id : null;
+    }
+    renderContent();
   } catch(e) {}
 }
 
