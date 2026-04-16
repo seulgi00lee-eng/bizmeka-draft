@@ -303,7 +303,7 @@ async function generate(id){
         return;
       }
       try {
-        const res = await fetch(SUPABASE_URL+'/rest/v1/draft_queue?select=*&status=eq.done&drive_file_id=not.is.null&order=created_at.desc&limit=1', {
+        const res = await fetch(SUPABASE_URL+'/rest/v1/draft_queue?select=*&status=eq.done&order=created_at.desc&limit=1', {
           headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer '+SUPABASE_KEY }
         });
         const rows = await res.json();
@@ -364,7 +364,7 @@ async function revise(id) {
 // 드라이브 자동 폴링
 async function pollSupabase(){
   try {
-    const res = await fetch(SUPABASE_URL+'/rest/v1/draft_queue?select=*&status=eq.done&drive_file_id=not.is.null&order=created_at.desc&limit=20', {
+    const res = await fetch(SUPABASE_URL+'/rest/v1/draft_queue?select=*&status=eq.done&order=created_at.desc&limit=20', {
       headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer '+SUPABASE_KEY }
     });
     const rows = await res.json();
