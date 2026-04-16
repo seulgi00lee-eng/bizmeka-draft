@@ -207,6 +207,14 @@ function renderContent(){
           <button class="btn-sm primary" onclick="copyDraft('${t.id}')">전체 복사</button>
         </div>
       </div>
+      ${t.status==='done' ? `
+      <div style="display:flex;gap:8px;margin-top:4px">
+        <input type="text" id="revise-${t.id}" placeholder="수정 요청 입력 (예: 지급방법을 계좌이체로 변경, 담당자 홍길동 추가)"
+          style="flex:1;padding:8px 12px;border:1.5px solid #e2e8f0;border-radius:6px;font-size:12px;font-family:inherit;outline:none"
+          onkeydown="if(event.key==='Enter') revise('${t.id}')"
+          onfocus="this.style.borderColor='#2563eb'" onblur="this.style.borderColor='#e2e8f0'">
+        <button class="btn-sm primary" onclick="revise('${t.id}')">수정 적용 →</button>
+      </div>` : ''}
       <div class="draft-body ${!t.draft && t.status!=='loading' && t.status!=='error' ? 'empty' : ''}" id="draft-body-${t.id}">
         ${t.status==='loading' ? `<div class="loading"><div class="spinner"></div><span>기안 생성 중...</span></div>` :
           t.status==='error' ? `<div class="error-box">${t.draft}</div>` :
@@ -318,7 +326,39 @@ function updateFooter(){
   document.getElementById('footer-total').textContent = '전체 '+tabs.length+'건';
   document.getElementById('footer-done').textContent = '완료 '+tabs.filter(t=>t.status==='done').length+'건';
 }
-
+async function revise(id) {
+  const t = getTab(id); if(!t || !t.draft) return;
+  const input = document.getElementById('revise-'+id);
+  const request = input?.value.trim();
+  if(!request) { alert('수정 요청 내용을 입력해주세요.'); return; }
+  t.status = 'loading';
+  renderContent();
+  try {
+    const res = await fetch(PROXY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        mode: 'revise',
+        draft: t.draft,
+        request: request
+      })
+    });
+    const json = await res.json();
+    if(!json.ok) throw new Error(json.error || '서버 오류');
+    const text = (json.data.content || [])
+      .filter(b => b.type === 'text')
+      .map(b => b.text)
+      .join('');
+    if(!text) throw new Error('응답 없음');
+    t.draft = text;
+    t.status = 'done';
+    renderContent();
+  } catch(e) {
+    t.draft = '오류: ' + e.message;
+    t.status = 'error';
+    renderContent();
+  }
+}
 // 드라이브 자동 폴링
 async function pollSupabase(){
   try {
